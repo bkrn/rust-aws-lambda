@@ -58,7 +58,7 @@ impl Runtime {
         let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), port);
         let listener = TcpListener::bind(&addr).map_err(RuntimeError::from_io)?;
         let server = Server::new(s, listener.incoming());
-        self.inner.block_on_all(server)
+        self.inner.block_on(server)
     }
 }
 
