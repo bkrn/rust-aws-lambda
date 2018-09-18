@@ -45,7 +45,7 @@ impl Runtime {
     }
 
     /// Start the runtime with the given `Service`.
-    pub fn start_service<S>(self, s: S) -> Result<(), RuntimeError>
+    pub fn start_service<S>(mut self, s: S) -> Result<(), RuntimeError>
     where
         S: NewService<InitError = Error, Error = Error> + Send + 'static,
         S::Service: Send + 'static,
